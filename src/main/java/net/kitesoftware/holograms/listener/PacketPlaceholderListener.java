@@ -53,7 +53,7 @@ public class PacketPlaceholderListener extends PacketAdapter {
         PacketContainer packet = event.getPacket();
 
         if (packet.getType() == PacketType.Play.Server.ENTITY_METADATA) {
-            WrapperPlayServerEntityMetadata entityMetadataPacket = new WrapperPlayServerEntityMetadata(packet.deepClone());
+            WrapperPlayServerEntityMetadata entityMetadataPacket = new WrapperPlayServerEntityMetadata(packet);
             List<WrappedWatchableObject> dataWatcherValues = entityMetadataPacket.getEntityMetadata();
 
             if (dataWatcherValues == null) {
