@@ -98,7 +98,11 @@ public class PacketPlaceholderListener extends PacketAdapter {
             customName = (String) customNameWatchableObjectValue;
         }
 
+        String originalCustomName = customName;
         customName = PlaceholderAPI.setPlaceholders(player, customName);
+
+        if (originalCustomName.equals(customName))
+            return false;
 
         if (useOptional) { // 1.13 or above
             customNameWatchableObject.setValue(Optional.of(WrappedChatComponent.fromJson(customName).getHandle()));
